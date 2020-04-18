@@ -21,7 +21,7 @@ fun main() {
                 game.getDice()[numberAnswer - 1].lockDie()
             }
         }
-        if (game.getNumOfDiceThrows() <= 10){
+        if (game.getNumOfDiceThrows() <= 3){
             println("Do you want to throw again?(y/n)")
             throwAgain = readLine()!!.toLowerCase()
             if (throwAgain == "y"){
@@ -30,5 +30,5 @@ fun main() {
             }
 
         }
-    }while (game.getNumOfDiceThrows() <= 10)
+    }while (game.getNumOfDiceThrows() <= 3)
 }
