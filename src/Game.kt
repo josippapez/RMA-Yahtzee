@@ -105,5 +105,15 @@ class Game {
         for (x in 0 until 6) {
             print("${dice[x].number}\t")
         }
+        println()
+    }
+    fun throwDice() {
+        for (i in 0 until 6) {
+            if (!dice[i].locked) {
+                dice[i].setDieNumber((1..6).random());
+                println("Die ${dice[i].id + 1} Number: ${dice[i].number}")
+            }
+        }
+        incrementNumOfDiceThrows()
     }
 }

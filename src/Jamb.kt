@@ -3,13 +3,16 @@ fun main() {
     println("Welcome to Yahtzee!")
     val game = Game()
     game.setDice()
-    ThrowDice(game.getDice()).throwDice()
+    game.throwDice()
     do {
-        if(game.checkForYahtzee() || game.checkForLargeScale() || game.checkForLargeScale()){
+        if(game.checkForYahtzee() || game.checkForLargeScale() || game.checkForSmallScale()){
             game.printDice()
-            break
+            println("Do you want to continue playing?(y/n)")
+            var continuePlaying = readLine()!!.toLowerCase()
+            if (continuePlaying == "n") {
+                break
+            }
         }
-        game.incrementNumOfDiceThrows()
         println("Do you want to lock dies?(y/n)")
         var lockAnswer = readLine()!!.toLowerCase()
         if (lockAnswer.equals("y")){
@@ -26,7 +29,7 @@ fun main() {
             throwAgain = readLine()!!.toLowerCase()
             if (throwAgain == "y"){
                 println("Throwing...")
-                ThrowDice(game.getDice()).throwDice()
+                game.throwDice()
             }
 
         }
