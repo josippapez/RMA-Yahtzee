@@ -8,4 +8,10 @@ class Dice(number: Int, id: Int){
     fun lockDie(){
         locked = !locked
     }
+    fun throwDice() {
+        if (!locked) {
+            number = (1..6).random();
+            println("Die ${id + 1} Number: $number")
+        }
+    }
 }

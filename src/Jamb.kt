@@ -2,10 +2,12 @@ fun main() {
     var throwAgain = "n";
     println("Welcome to Yahtzee!")
     val game = Game()
+    val diceChecker = DiceChecker()
     game.setDice()
-    game.throwDice()
+    game.getDice().forEach { Dice -> Dice.throwDice() }
+    game.incrementNumOfDiceThrows()
     do {
-        if(game.checkForYahtzee() || game.checkForLargeScale() || game.checkForSmallScale()){
+        if(diceChecker.checkScore(game.getDice())) {
             game.printDice()
             println("Do you want to continue playing?(y/n)")
             var continuePlaying = readLine()!!.toLowerCase()
@@ -29,7 +31,8 @@ fun main() {
             throwAgain = readLine()!!.toLowerCase()
             if (throwAgain == "y"){
                 println("Throwing...")
-                game.throwDice()
+                game.getDice().forEach { Dice -> Dice.throwDice() }
+                game.incrementNumOfDiceThrows()
             }
 
         }
